@@ -25,6 +25,9 @@
 > ***Комментарий:***  
 > Позитивные и негативные кейсы
 
+> [!IMPORTANT]  
+> Проверка производится в браузере Google Chrome, если не написано иное напрямую
+
 ## 3. Структура отчета
 1. [Функциональное тестирование](#функциональное-тестирование)
 2. [Нефункциональное тестирование](#нефункциональное-тестирование)
@@ -46,10 +49,9 @@
     - Название товара: _Jogel Мяч баскетбольный JB-100_
     - Цена: _999_
     - Описание: 
-```md
-Топовый мяч, хорошо отскакивает от большинства поверхностей. Хорошо подходит для стритбола и как для начала занятий баскетболом, так и для профессиональной деятельности.
-```
-
+    ```md
+    Топовый мяч, хорошо отскакивает от большинства поверхностей. Хорошо подходит для стритбола и как для начала занятий баскетболом, так и для профессиональной деятельности.
+    ```
     - Фотография: _Файл изображения см. ниже_
     - Адрес: _Москва, ул. Тверская, 12_  
   - **Действие:** Нажатие на кнопку "Разместить объявление"
@@ -90,34 +92,33 @@
 
 ###### Название товара
 - [x] **Название не заполнено**
-    - **Ввод:** Пустое поле
-    - **Ожидание:** Подсветить поле ввода: "Название".
-    - **Фактический результат:** Выделилось красным поле "Название".
+  - **Ввод:** Пустое поле
+  - **Ожидание:** Подсветить поле ввода: "Название".
+  - **Фактический результат:** Выделилось красным поле "Название".
 
-    ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Пустое%20поле/img.png)
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Пустое%20поле/img.png)
 
 - [ ] **Название слишком длинное (> 45 символов)** <a name="bug-4.1-002"></a>
-    - **Ввод:**
-```md
-оооооооооооооооооооооооооооооооооооооооооооооооооо
-```
-
-    - **Ожидание:** Ошибка "Название не должно превышать 45 символов"
-    - **Фактический результат:** Система не обработала ошибку, объявление разместилось.
+  - **Ввод:**
+  ```md
+  оооооооооооооооооооооооооооооооооооооооооооооооооо
+  ```
+  - **Ожидание:** Ошибка "Название не должно превышать 45 символов"
+  - **Фактический результат:** Система не обработала ошибку, объявление разместилось.
     
-    ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Название%20слишком%20длинное/img.png)
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Название%20слишком%20длинное/img.png)
 
 - [ ] **Название содержит код** <a name="bug-4.1-005"></a>
-    - **Ввод:**
-```js
-<script>alert("Hello")</script>
-```
-    - **Ожидание:** Создание объявления без выведения на экран фразы "Hello"
-    - **Фактический результат:** Создание объявления без выведения на экран фразы "Hello", но с пустым названием
+  - **Ввод:**
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  - **Ожидание:** Создание объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Создание объявления без выведения на экран фразы "Hello", но с пустым названием
 - [ ] **Введены битые символы** <a name="bug-4.1-003"></a>
   - **Ввод:** `Hello` // обработанное через https://zalgo.org/
   
-    ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Введены%20битые%20символы/img.png)
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Название%20товара/Введены%20битые%20символы/img.png)
   
   - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
   - **Фактический результат:** Объявление удалось создать
@@ -195,7 +196,7 @@
 
 ###### Описание
 
-- [] **Пустое поле**
+- [x] **Пустое поле**
   - **Ввод:** Пустое поле
   
   ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Описание/Пустое%20поле/img.png)
@@ -207,9 +208,9 @@
 
 - [x] **Длинное описание (html)**
   - **Ввод:** 
-```md
-ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-```
+  ```md
+  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+  ```
 
   ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Описание/Длинное%20описание%20(html)/img.png)
 
@@ -220,11 +221,11 @@ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 - [ ] **Описание содержит код** <a name="bug-4.1-007"></a>
   - **Ввод:**
-```js
-<script>alert("Hello")</script>
-```
-    - **Ожидание:** Создание объявления без выведения на экран фразы "Hello"
-    - **Фактический результат:** Создание объявления без выведения на экран фразы "Hello", но с пустым описанием
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  - **Ожидание:** Создание объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Создание объявления без выведения на экран фразы "Hello", но с пустым описанием
 
 - [ ] **Введены битые символы** <a name="bug-4.1-008"></a>
   - **Ввод:** `Hello` // обработанное через https://zalgo.org/
@@ -253,12 +254,185 @@ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 - [ ] **Попытка добавить png** <a name="bug-4.1-010"></a>
   - **Ввод:** png и zip (адрес - `img/4.1/Создание объявления/Негативные сценарии/Фотография/png-zip/test.zip`)
 
-    ![portal.png](img/4.1/Создание объявления/Негативные сценарии/Фотография/png-zip/portal.png)
+    ![portal.png](img/4.1/Создание%20объявления/Негативные%20сценарии/Фотография/png-zip/portal.png)
 
   - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобного типа
   - **Фактический результат:** Объявление удалось создать
 
 ###### Адрес
+
+- [x] **Пустое поле**
+  - **Ввод:** Пустое поле
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности отсутствия адреса
+  - **Фактический результат:** Выделилось красным поле "Адрес".
+
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Пустое%20поле/img.png)
+
+- [x] **Длинный адрес (html)**
+  - **Ввод:**
+  ```md
+  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+  ```
+
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Длинный%20адрес%20(html)/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности отсутствия адреса
+  - **Фактический результат:** Выделилось красным поле "Адрес".
+
+  ![img_1.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Длинный%20адрес%20(html)/img_1.png)
+
+- [x] **Адрес содержит код**
+  - **Ввод:**
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  - **Ожидание:** Создание объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Создание объявления без выведения на экран фразы "Hello"
+
+  ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/код/img.png)
+
+- [ ] **Введены битые символы** <a name="bug-4.1-011"></a>
+  - **Ввод:** `Hello` // обработанное через https://zalgo.org/
+
+    ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Битые%20символы/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Несколько ошибок с бекенда, ошибка открытия объявления, хотя на фронте отрабатывает как для созданного
+
+    ![img_1.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Битые%20символы/img_1.png)
+
+    ![img_2.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Битые%20символы/img_2.png)
+
+- [ ] **Введен эмодзи** <a name="bug-4.1-016"></a>
+  - **Ввод:** `😀`
+
+    ![img.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Эмодзи/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Объявление создалось
+
+    ![img_1.png](./img/4.1/Создание%20объявления/Негативные%20сценарии/Адрес/Эмодзи/img_1.png)
+
+##### Визуальные
+
+###### Категория
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-012"></a>
+  - **Фактический результат:** Выход за границы экрана
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Категория/img.png)
+
+###### Название
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-013"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Название/img.png)
+
+###### Описание
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-014"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Описание/img.png)
+
+###### Адрес
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-015"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Адрес/img.png)
+
+###### Кнопка
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-017"></a>
+  - **Фактический результат:** Кнопка переход на страницу создания уезжает вниз и загораживает кнопку, благодаря которой можем разместить объявление
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Кнопка/img.png)
+
+###### Форма
+
+- [ ] **Уменьшение экрана до ширины 1000px и меньше** <a name="bug-4.1-018"></a>
+  - **Фактический результат:** Форма не помещается, появляется горизонтальный ползунок
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Форма/img.png)
+
+###### Оглавление
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.1-019"></a>
+  - **Фактический результат:** Оглавление прижато к левому краю
+
+  ![img.png](./img/4.1/Создание%20объявления/Визуальные/Оглавление/img.png)
+
+##### Визуальные в других браузерах
+
+###### Safari
+
+- [x] **Новых ошибок визуала нет (не считая поля выбора категории)**
+  - **Фактический результат:** Новые ошибки не появилсь (в сравнении с Google Chrome)
+
+  ![img.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Safari/img.png)
+  
+  ![img_2.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Safari/img_2.png)
+
+- [ ] **Поле выбора категории** <a name="bug-4.1-020"></a>
+  - **Фактический результат:** Нет окантовки (обводка поля выбора)
+
+  ![img_1.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Safari/img_1.png)
+
+###### FireFox
+
+- [x] **Новых ошибок визуала нет**
+  - **Фактический результат:** Новые ошибки не появилсь (в сравнении с Google Chrome)
+
+  ![img.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/FireFox/img.png)
+
+  ![img_1.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/FireFox/img_1.png)
+  
+  ![img_2.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/FireFox/img_2.png)
+  
+  ![img_3.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/FireFox/img_3.png)
+
+###### Opera
+
+- [x] **Новых ошибок визуала нет**
+  - **Фактический результат:** Новые ошибки не появилсь (в сравнении с Google Chrome)
+
+  ![img.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Opera/img.png)
+
+  ![img_1.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Opera/img_1.png)
+
+  ![img_2.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Opera/img_2.png)
+
+  ![img_3.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Opera/img_3.png)
+
+###### Microsoft Edge
+
+- [x] **Новых ошибок визуала нет**
+  - **Фактический результат:** Новые ошибки не появилсь (в сравнении с Google Chrome)
+
+  ![img.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Microsoft%20Edge/img.png)
+
+  ![img_1.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Microsoft%20Edge/img_1.png)
+
+  ![img_2.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Microsoft%20Edge/img_2.png)
+
+  ![img_3.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Microsoft%20Edge/img_3.png)
+
+###### Yandex
+
+- [x] **Новых ошибок визуала нет**
+  - **Фактический результат:** Новые ошибки не появилсь (в сравнении с Google Chrome)
+
+  ![img.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Yandex/img.png)
+
+  ![img_1.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Yandex/img_1.png)
+
+  ![img_2.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Yandex/img_2.png)
+
+  ![img_3.png](img/4.1/Создание%20объявления/Визуальные%20в%20других%20браузерах/Yandex/img_3.png)
+
+<br/><br/><br/>
 
 ### 4.2 Корзина
 - [ ] Добавление товара в корзину
@@ -276,18 +450,28 @@ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 ## 6. Баги <a name="баги"></a>
 
-| ID                      | Описание бага                                                                                                                                                                  | Шаги для воспроизведения                                                                                                                                                     | Ожидаемый результат                   | Фактический результат                      | Приоритет                          |
-|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------------------------------|------------------------------------|
-| [4.1-001](#bug-4.1-001) | Не отображается изображение после размещение объявления                                                                                                                        | 1. Открыть размещение каталога  <br/>2. Заполнить все поля обязательно добавив изображение  <br/>3. Нажать на кнопку "Разместить объявление"                                 | Товар добавляется                     | Картинка не отображается после добавления  | 🟠 $${\color{darkorange}Средний}$$ |
-| [4.1-002](#bug-4.1-002) | Удаётся разместить объявление с названием длиннее чем 45 символов                                                                                                              | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, название сделать длинной больше 45 символов  <br/>3. Нажать на кнопку "Разместить объявление"                    | Вывод соответствующей ошибки          | Объявление разместилось                    | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-003](#bug-4.1-003) | Введены битые символы в названии объявления и они системой никак не запрещены                                                                                                  | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, название заполнить битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                            | Вывод соответствующей ошибки          | Объявление разместилось                    | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-004](#bug-4.1-004) | Введены символы в поле цены (изменение html), а должна вывестись ошибка                                                                                                        | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, цену заполнить символами, перед этим сменив тип поля на `text`  <br/>3. Нажать на кнопку "Разместить объявление" | Вывод соответствующей ошибки          | Объявление разместилось с ценой равной 0   | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-005](#bug-4.1-005) | Удалось создать товар с пустым названием                                                                                                                                       | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, название заполнить скриптом `<script>alert("Hello")</script>`  <br/>3. Нажать на кнопку "Разместить объявление"  | Создание объявления с таким названием | Объявление разместилось с пустым названием | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-006](#bug-4.1-006) | Изменено значение value у категории                                                                                                                                            | 1. Открыть размещение каталога  <br/>2. Через код страницы поменять значение value и выбрать измененное значение  <br/>3. Нажать на кнопку "Разместить объявление"           | Вывод соответствующей ошибки          | Ошибка пришла с бекенда                    | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-007](#bug-4.1-007) | Удалось создать товар с пустым описанием                                                                                                                                       | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, описание заполнить скриптом `<script>alert("Hello")</script>`  <br/>3. Нажать на кнопку "Разместить объявление"  | Создание объявления с таким названием | Объявление разместилось с пустым названием | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-008](#bug-4.1-008) | Введены битые символы в описании объявления и они системой никак не запрещены                                                                                                  | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, описание заполнить битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                            | Вывод соответствующей ошибки          | Объявление разместилось                    | 🟡 $${\color{gold}Низкий}$$        |
-| [4.1-009](#bug-4.1-009) | Введены сильно битые символы в описании объявления и они системой никак не запрещены, ошибки со стороны бекенда, возможная высокая уязвимость, проходит далеко                 | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, описание заполнить сильно битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                     | Вывод соответствующей ошибки          | Несколько ошибок со стороны бекенда        | 🔴 $${\color{red}Высокий}$$        |
-| [4.1-010](#bug-4.1-010) | Прокидываются картинки других типов, возможная уязвимость (zip-бомба, Path Traversal (архив с путями вне разрешенной директории), прокидывание скриптов (майнер, червь...) ... | 1. Открыть размещение каталога  <br/>2. Заполнить все поля, добавить png картинку  <br/>3. Нажать на кнопку "Разместить объявление"                                          | Вывод соответствующей ошибки          | Объявление разместилось                    | 🔴 $${\color{red}Высокий}$$        |
+| ID                      | Описание бага                                                                                                                                                                  | Шаги для воспроизведения                                                                                                                                                       | Ожидаемый результат                                   | Фактический результат                                       | Приоритет                          |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------------|------------------------------------|
+| [4.1-001](#bug-4.1-001) | Не отображается изображение после размещение объявления                                                                                                                        | 1. Открыть размещение объявления  <br/>2. Заполнить все поля обязательно добавив изображение  <br/>3. Нажать на кнопку "Разместить объявление"                                 | Товар добавляется                                     | Картинка не отображается после добавления                   | 🟠 $${\color{darkorange}Средний}$$ |
+| [4.1-002](#bug-4.1-002) | Удаётся разместить объявление с названием длиннее чем 45 символов                                                                                                              | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, название сделать длинной больше 45 символов  <br/>3. Нажать на кнопку "Разместить объявление"                    | Вывод соответствующей ошибки                          | Объявление разместилось                                     | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-003](#bug-4.1-003) | Введены битые символы в названии объявления и они системой никак не запрещены                                                                                                  | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, название заполнить битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                            | Вывод соответствующей ошибки                          | Объявление разместилось                                     | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-004](#bug-4.1-004) | Введены символы в поле цены (изменение html), а должна вывестись ошибка                                                                                                        | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, цену заполнить символами, перед этим сменив тип поля на `text`  <br/>3. Нажать на кнопку "Разместить объявление" | Вывод соответствующей ошибки                          | Объявление разместилось с ценой равной 0                    | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-005](#bug-4.1-005) | Удалось создать товар с пустым названием                                                                                                                                       | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, название заполнить скриптом `<script>alert("Hello")</script>`  <br/>3. Нажать на кнопку "Разместить объявление"  | Создание объявления с таким названием                 | Объявление разместилось с пустым названием                  | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-006](#bug-4.1-006) | Изменено значение value у категории                                                                                                                                            | 1. Открыть размещение объявления  <br/>2. Через код страницы поменять значение value и выбрать измененное значение  <br/>3. Нажать на кнопку "Разместить объявление"           | Вывод соответствующей ошибки                          | Ошибка пришла с бекенда                                     | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-007](#bug-4.1-007) | Удалось создать товар с пустым описанием                                                                                                                                       | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, описание заполнить скриптом `<script>alert("Hello")</script>`  <br/>3. Нажать на кнопку "Разместить объявление"  | Создание объявления с таким названием                 | Объявление разместилось с пустым названием                  | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-008](#bug-4.1-008) | Введены битые символы в описании объявления и они системой никак не запрещены                                                                                                  | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, описание заполнить битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                            | Вывод соответствующей ошибки                          | Объявление разместилось                                     | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-009](#bug-4.1-009) | Введены сильно битые символы в описании объявления и они системой никак не запрещены, ошибки со стороны бекенда, возможная высокая уязвимость, проходит далеко                 | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, описание заполнить сильно битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                     | Вывод соответствующей ошибки                          | Несколько ошибок со стороны бекенда                         | 🔴 $${\color{red}Высокий}$$        |
+| [4.1-010](#bug-4.1-010) | Прокидываются картинки других типов, возможная уязвимость (zip-бомба, Path Traversal (архив с путями вне разрешенной директории), прокидывание скриптов (майнер, червь...) ... | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, добавить png картинку  <br/>3. Нажать на кнопку "Разместить объявление"                                          | Вывод соответствующей ошибки                          | Объявление разместилось                                     | 🔴 $${\color{red}Высокий}$$        |
+| [4.1-011](#bug-4.1-011) | Введены битые символы в адресе объявления и они системой никак не запрещены, ошибки со стороны бекенда, возможная высокая уязвимость, проходит далеко                          | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, адрес заполнить битыми символами  <br/>3. Нажать на кнопку "Разместить объявление"                               | Вывод соответствующей ошибки                          | Несколько ошибок со стороны бекенда                         | 🔴 $${\color{red}Высокий}$$        |
+| [4.1-012](#bug-4.1-012) | Поле категория выходит за границы видимого экрана                                                                                                                              | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Поле ввода видно полностью                            | Часть поля ввода не видно                                   | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-013](#bug-4.1-013) | Поле название и подсказка выходят за границы видимого экрана                                                                                                                   | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Поле ввода и подсказку видно полностью                | Часть поля ввода и подсказки не видно                       | 🟠 $${\color{darkorange}Средний}$$ |
+| [4.1-014](#bug-4.1-014) | Поле описание и подсказка выходят за границы видимого экрана                                                                                                                   | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Поле ввода и подсказку видно полностью                | Часть поля ввода и подсказки не видно                       | 🟠 $${\color{darkorange}Средний}$$ |
+| [4.1-015](#bug-4.1-015) | Поле адрес и подсказка выходят за границы видимого экрана                                                                                                                      | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Поле ввода и подсказку видно полностью                | Часть поля ввода и подсказки не видно                       | 🟠 $${\color{darkorange}Средний}$$ |
+| [4.1-016](#bug-4.1-016) | Введено эмодзи в адресе объявления и они системой никак не запрещены, показывает, что нет проверки адреса на действительность                                                  | 1. Открыть размещение объявления  <br/>2. Заполнить все поля, адрес заполнить эмодзи `😀`  <br/>3. Нажать на кнопку "Разместить объявление"                                    | Вывод соответствующей ошибки                          | Объявление разместилось                                     | 🔴 $${\color{red}Высокий}$$        |
+| [4.1-017](#bug-4.1-017) | Кнопка перехода на страницу создания объявления загораживает кнопку создания объявления                                                                                        | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Кнопку создания объявления видно полностью            | Другая кнопка загородила необходимую кнопку                 | 🔴 $${\color{red}Высокий}$$        |
+| [4.1-018](#bug-4.1-018) | При размере экрана меньше 1000px содержимое экрана не помещается и появляется горизонтальный ползунок                                                                          | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 1000px и меньше                                                                                                   | Все видно, ничто не выходит за пределы экрана         | Не поместилось содержимое, появился горизонтальный ползунок | 🟠 $${\color{darkorange}Средний}$$ |
+| [4.1-019](#bug-4.1-019) | При размере экрана 300px оглавление прижато к левому краю                                                                                                                      | 1. Открыть размещение объявления  <br/>2. Уменьшить экран до 300px                                                                                                             | Между оглавлением и левым краем есть небольшой отступ | Отступ отсутствует                                          | 🟡 $${\color{gold}Низкий}$$        |
+| [4.1-020](#bug-4.1-020) | Открыть страницу создания объявления в браузере Safari (нет окантовки поля выбора "Категория")                                                                                 | 1. Открыть сайт в браузере Safari  <br/>2. Открыть размещение объявления                                                                                                       | У поля выбора категории есть окантовка                | Окантовка отсутствует                                       | 🟡 $${\color{gold}Низкий}$$        |
 
 > ***Комментарий:***  
 > Шаблон -  

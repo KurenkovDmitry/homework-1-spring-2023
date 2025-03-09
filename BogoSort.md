@@ -431,6 +431,342 @@
 
 ### 4.2 Редактирование объявления
 
+#### Редактирование объявления
+
+##### Позитивные сценарии
+- [ ] **Успешное редактирование объявления** <a name="bug-4.2-001"></a>
+  - **Ввод:**
+    - Категория: _Спорт и отдых_
+    - Название товара: _Jogel Мяч баскетбольный JB-100_
+    - Цена: _999_
+    - Описание:
+    ```md
+    Топовый мяч, хорошо отскакивает от большинства поверхностей. Хорошо подходит для стритбола и как для начала занятий баскетболом, так и для профессиональной деятельности.
+    ```
+    - Фотография: _Файл изображения см. ниже_
+    - Адрес: _Москва, ул. Тверская, 12_
+  - **Действие:** Нажатие на кнопку "Сохранить изменения"
+
+    ![img.png](./img/4.2/Редактирование%20объявления/Позитивный%20сценарий/img.png)
+
+  - **Ожидание:**
+    - Объявление успешно изменено и отображается в каталоге.
+    - Фотография корректно загружена и отображается в карточке товара.
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Позитивный%20сценарий/img_1.png)
+
+    ![img_2.png](./img/4.2/Редактирование%20объявления/Позитивный%20сценарий/img_2.png)
+
+  - **Фактический результат:**
+    - [x] Объявление изменено, отображается в каталоге.
+    - [ ] Изображение не отображается (отсутствует или сломанный значок).
+
+Добавленное изображение:
+
+![basketball-white-background-ai-generated.jpg](./img/4.2/Редактирование%20объявления/Позитивный%20сценарий/basketball-white-background-ai-generated.jpg)
+
+##### Негативные сценарии
+
+###### Категория
+
+- [ ] **Изменить в html значение value на несуществующее**  <a name="bug-4.2-006"></a>
+  - **Ввод:** Категория `Женский гардероб` // Перед этим поменять значение value с `d4d10f10-4f9a-4bd5-ab1e-d2fc3ed35748` на `d4d10f10-4f9a-4bd5-ab1e-d2fc3ed35700`.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Категория/Изменить%20value/img.png)
+
+  - **Ожидание:** Не пропустит, вернет ошибку
+  - **Фактический результат:** Не пропустило, вернуло ошибку, но с бекенда.
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Категория/Изменить%20value/img_1.png)
+
+  ![img_2.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Категория/Изменить%20value/img_2.png)
+
+###### Название товара
+
+- [x] **Название не заполнено**
+  - **Ввод:** Пустое поле
+  - **Ожидание:** Подсветить поле ввода: "Название".
+  - **Фактический результат:** Выделилось красным поле "Название".
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Пустое%20поле/img.png)
+
+- [ ] **Название слишком длинное (> 45 символов)** <a name="bug-4.2-002"></a>
+  - **Ввод:**
+  ```md
+  ssssssssssssssssssssssssssssssssssssssssssssssssss
+  ```
+  - **Ожидание:** Ошибка "Название не должно превышать 45 символов"
+  - **Фактический результат:** Система не обработала ошибку, объявление изменилось.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Название%20слишком%20длинное/img.png)
+
+- [ ] **Название содержит код** <a name="bug-4.2-005"></a>
+  - **Ввод:**
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Содержит%20код/img.png)
+
+  - **Ожидание:** Изменилось объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Изменение объявления без выведения на экран фразы "Hello", но название сменилось на пустое
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Содержит%20код/img_1.png)
+
+- [ ] **Введены битые символы** <a name="bug-4.2-003"></a>
+  - **Ввод:** `Hello` // обработанное через https://zalgo.org/
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Введены%20битые%20символы/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Объявление удалось изменить
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Введены%20битые%20символы/img_1.png)
+
+- [x] **Эмодзи в названии**
+  - **Ввод:** `🙂`
+  - **Ожидание:** Изменение объявления с таким названием.
+  - **Фактический результат:** Изменение объявления с таким названием.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Название%20товара/Эмодзи/img.png)
+
+###### Цена
+
+- [ ] **Ввод символов после изменения типа (html)** <a name="bug-4.2-004"></a>
+  - **Ввод:** `test` // Перед этим изменить type поля на `text`.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Ввод%20символов/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Система пропустила, изменив объявление на нулевую цену
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Ввод%20символов/img_1.png)
+
+- [x] **Цена равная 0**
+  - **Ввод:** `0`
+  - **Ожидание:** Система пропустила создав объявление с нулевой ценой
+  - **Фактический результат:** Система пропустила, изменив в объявлении цену на ноль
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Нулевая%20цена/img.png)
+
+- [x] **Отрицательная цена**
+  - **Ввод:** `-2`
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Отрицательная%20цена/img.png)
+
+  - **Ожидание:** Выделилось красным поле "Цена".
+  - **Фактический результат:** Выделилось красным поле "Цена".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Отрицательная%20цена/img_1.png)
+
+- [x] **Битые цифры (html)**
+  - **Ввод:** `1` // обработать через https://zalgo.org/ и перед этим изменить type поля на `text`.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Битая%20цифра/img.png)
+
+  - **Ожидание:** Выделилось красным поле "Цена".
+  - **Фактический результат:** Выделилось красным поле "Цена".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Битая%20цифра/img_1.png)
+
+- [x] **Дробные числа**
+  - **Ввод:** `0.55555`
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности дробной цены
+  - **Фактический результат:** Вывод соответствующего уведомления о невозможности дробной цены
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Дробные%20числа/img.png)
+
+- [x] **Дробные числа (html)**
+  - **Ввод:** `0.55555` // Перед этим изменить type поля на `text`.
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Дробные%20числа%20html/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности дробной цены
+  - **Фактический результат:** Выделилось красным поле "Цена".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Дробные%20числа%20html/img_1.png)
+
+- [x] **Пустое поле**
+  - **Ввод:** Пустое поле
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности пустой цены
+  - **Фактический результат:** Выделилось красным поле "Цена".
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Цена/Пустое%20поле/img.png)
+
+###### Описание
+
+- [x] **Пустое поле**
+  - **Ввод:** Пустое поле
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Пустое%20поле/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности отсутствия описания
+  - **Фактический результат:** Выделилось красным поле "Описание".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Пустое%20поле/img_1.png)
+
+- [x] **Длинное описание (html)**
+  - **Ввод:** // Сначала убрать атрибут `maxlength`
+  ```md
+  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+  ```
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Длинное%20описание/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности отсутствия описания
+  - **Фактический результат:** Выделилось красным поле "Описание".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Длинное%20описание/img_1.png)
+
+- [ ] **Описание содержит код** <a name="bug-4.2-007"></a>
+  - **Ввод:**
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  - **Ожидание:** Изменение объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Изменение объявления без выведения на экран фразы "Hello", но на пустое значение
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Код/img.png)
+
+- [ ] **Введены битые символы** <a name="bug-4.2-008"></a>
+  - **Ввод:** `Hello` // обработанное через https://zalgo.org/
+
+    ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Битые%20символы/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Объявление удалось изменить
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Битые%20символы/img_1.png)
+
+- [ ] **Введены сильно битые символы** <a name="bug-4.2-009"></a>
+  - **Ввод:** `Hello` // обработанное через https://zalgo.org/
+
+    ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Сильно%20битые%20символы/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Ошибка с бекенда, открывает со старым описанием
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Описание/Сильно%20битые%20символы/img_1.png)
+
+###### Фотография
+
+- [ ] **Попытка добавить png** <a name="bug-4.2-010"></a>
+  - **Ввод:** png и zip (адрес - `img/4.2/Редактирование объявления/Негативные сценарии/Фотография/png-zip/test.zip`)
+
+    ![portal.png](img/4.2/Редактирование%20объявления/Негативные%20сценарии/Фотография/png-zip/portal.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобного типа
+  - **Фактический результат:** Объявление не удалось изменить, но ответ с бекенда, а не фронта
+
+    ![img.png](img/4.2/Редактирование%20объявления/Негативные%20сценарии/Фотография/png-zip/img.png)
+  
+    ![img_1.png](img/4.2/Редактирование%20объявления/Негативные%20сценарии/Фотография/png-zip/img_1.png)
+
+###### Адрес
+
+- [x] **Пустое поле**
+  - **Ввод:** Пустое поле
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности отсутствия адреса
+  - **Фактический результат:** Выделилось красным поле "Адрес".
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Пустое%20поле/img.png)
+
+- [x] **Длинный адрес (html)**
+  - **Ввод:**
+  ```md
+  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+  ```
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Длинный%20адрес%20(html)/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности такого адреса
+  - **Фактический результат:** Выделилось красным поле "Адрес".
+
+  ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Длинный%20адрес%20(html)/img_1.png)
+
+- [x] **Адрес содержит код**
+  - **Ввод:**
+  ```js
+  <script>alert("Hello")</script>
+  ```
+  - **Ожидание:** Изменение объявления без выведения на экран фразы "Hello"
+  - **Фактический результат:** Изменение объявления без выведения на экран фразы "Hello"
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Код/img.png)
+
+- [ ] **Введены битые символы** <a name="bug-4.2-011"></a>
+  - **Ввод:** `Hello` // обработанное через https://zalgo.org/
+
+    ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Битые%20символы/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Ошибка с бекенда, открывает со старым описанием
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Битые%20символы/img_1.png)
+
+- [ ] **Введен эмодзи** <a name="bug-4.2-016"></a>
+  - **Ввод:** `😀`
+
+    ![img.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Эмодзи/img.png)
+
+  - **Ожидание:** Вывод соответствующего уведомления о невозможности использования подобных символов
+  - **Фактический результат:** Объявление изменилось
+
+    ![img_1.png](./img/4.2/Редактирование%20объявления/Негативные%20сценарии/Адрес/Эмодзи/img_1.png)
+
+##### Визуальные
+
+###### Категория
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-012"></a>
+  - **Фактический результат:** Выход за границы экрана
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Категория/img.png)
+
+###### Название
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-013"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Название/img.png)
+
+###### Описание
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-014"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Описание/img.png)
+
+###### Адрес
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-015"></a>
+  - **Фактический результат:** Выход за границы экрана (поля ввода и комментария по ограничению размера)
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Адрес/img.png)
+
+###### Кнопка
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-017"></a>
+  - **Фактический результат:** Выход за границы экрана
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Кнопка/img.png)
+
+###### Форма
+
+- [ ] **Уменьшение экрана до ширины 1000px и меньше** <a name="bug-4.2-018"></a>
+  - **Фактический результат:** Форма не помещается, появляется горизонтальный ползунок
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Форма/img.png)
+
+###### Оглавление
+
+- [ ] **Уменьшение экрана до ширины 300px** <a name="bug-4.2-019"></a>
+  - **Фактический результат:** Оглавление прижато к левому краю
+
+  ![img.png](./img/4.2/Редактирование%20объявления/Визуальные/Оглавление/img.png)
+
+##### Визуальные в других браузерах
+
 <br/><br/><br/>
 
 ### 4.3 Страница своего товара
